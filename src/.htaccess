@@ -1,0 +1,12 @@
+RewriteEngine on
+RewriteBase /
+
+RewriteRule ^manifest.json$ manifest.php?type=client [L]
+RewriteRule ^manifest-server.json$ manifest.php?type=server [L]
+RewriteRule ^manifest-full.json$ manifest.php?type=full [L]
+
+RewriteRule ^modpack.zip$ modpack.php?type=client [L]
+RewriteRule ^modpack-server.zip$ modpack.php?type=server [L]
+
+RewriteCond %{ENV:REDIRECT_STATUS} !=200
+RewriteRule . /? [L,R=301,NC]

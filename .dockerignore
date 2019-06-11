@@ -1,0 +1,9 @@
+.git
+.vscode
+Dockerfile
+docker-compose.*
+.DS_Store
+.gitignore
+README.md
+env.*
+/mods/*

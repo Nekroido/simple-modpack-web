@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  manifest-host:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./mods:/var/www/html/mods
