@@ -44,37 +44,30 @@ Run `docker-compose up` or create your own version of `docker-compose.yml`.
 The system generates manifest JSON of a custom format as in the following example:
 ```json
 {
-  "type": "full",
-  "updated": 1544442659,
-  "mods": {
-    "common": [
-      {
-        "name": "Chisel",
-        "filename": "Chisel-MC1.12.2-0.2.1.35.jar",
-        "size": 4310011,
-        "updated": 1544442659,
-        "checksum": "dbda5475859bcffc9f572c5a1506a1f4"
-      }
-    ],
-    "server": [
-      {
-        "name": "Industrial Craft 2 Experimental",
-        "filename": "industrialcraft-2-2.8.73-ex112.jar",
-        "size": 7982832,
-        "updated": 1544366678,
-        "checksum": "ed584cbfb3dcc4e9fbe91acec623a93b"
-      }
-    ],
-    "client": [
-      {
-        "name": "JEI",
-        "filename": "jei_1.12.2-4.13.1.225.jar",
-        "size": 584822,
-        "updated": 1544372119,
-        "checksum": "09cfbc2770e6d141df2f2521b5b99e09"
-      }
-    ]
-  }
+   "type":"server",
+   "updated":1544442659,
+   "mods":{
+      "common":[
+         {
+            "name":"Chisel",
+            "filename":"Chisel-MC1.12.2-0.2.1.35.jar",
+            "downloadUrl":"http://127.0.0.1/mods/common/Chisel/Chisel-MC1.12.2-0.2.1.35.jar",
+            "size":4310011,
+            "updated":1544442659,
+            "checksum":"dbda5475859bcffc9f572c5a1506a1f4"
+         }
+      ],
+      "server":[
+         {
+            "name":"Industrial Craft 2 Experimental",
+            "filename":"industrialcraft-2-2.8.73-ex112.jar",
+            "downloadUrl":"http://127.0.0.1/mods/server/Industrial%20Craft%202%20Experimental/industrialcraft-2-2.8.73-ex112.jar",
+            "size":7982832,
+            "updated":1544366678,
+            "checksum":"ed584cbfb3dcc4e9fbe91acec623a93b"
+         }
+      ]
+   }
 }
 ```
 
@@ -85,4 +78,4 @@ Pull requests and suggestions are welcome!
 * [Nekroido](https://github.com/nekroido)
 
 ## Licence
-MIT
+[MIT](LICENSE)

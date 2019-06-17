@@ -9,7 +9,8 @@ trait GetAbsoluteUrlFromFilePath
         $prefix = 'http' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 's' : '') . '://'
             . $_SERVER['SERVER_NAME']
             . ($_SERVER['SERVER_PORT'] !== '80' ? ':' . $_SERVER['SERVER_PORT'] : '');
-        $url = str_replace(DIRECTORY_SEPARATOR, '/', $prefix . str_replace($_SERVER["DOCUMENT_ROOT"], '', realpath($filePath)));
+        $uri = str_replace(DIRECTORY_SEPARATOR, '/', str_replace($_SERVER["DOCUMENT_ROOT"], '', realpath($filePath)));
+        $url = $prefix . implode('/', array_map('rawurlencode', explode('/', $uri)));
 
         return $url;
     }
