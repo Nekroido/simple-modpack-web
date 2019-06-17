@@ -63,18 +63,18 @@ class Modpack
         $modpack = new self();
         $modpack->updated = 0;
 
-        $modpack->folder = $folder;
+        $modpack->folder = realpath($folder);
         $modpack->type = $include;
 
-        if (file_exists($folder) && is_dir($folder)) {
-            $modpack->mods['common'] = Mod::modsListFromFolder($folder . DIRECTORY_SEPARATOR . 'common');
+        if (file_exists($modpack->folder) && is_dir($modpack->folder)) {
+            $modpack->mods['common'] = Mod::modsListFromFolder($modpack->folder . DIRECTORY_SEPARATOR . 'common');
 
             if ($include == self::INCLUDE_ALL || $include == self::SERVER_ONLY) {
-                $modpack->mods['server'] = Mod::modsListFromFolder($folder . DIRECTORY_SEPARATOR . 'server');
+                $modpack->mods['server'] = Mod::modsListFromFolder($modpack->folder . DIRECTORY_SEPARATOR . 'server');
             }
 
             if ($include == self::INCLUDE_ALL || $include == self::CLIENT_ONLY) {
-                $modpack->mods['client'] = Mod::modsListFromFolder($folder . DIRECTORY_SEPARATOR . 'client');
+                $modpack->mods['client'] = Mod::modsListFromFolder($modpack->folder . DIRECTORY_SEPARATOR . 'client');
             }
 
             $modpack->updated = max(array_map(function ($o) {

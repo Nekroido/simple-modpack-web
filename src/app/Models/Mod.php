@@ -6,15 +6,22 @@ class Mod
 {
     const IGNORED_FILES = ['.', '..', '.gitkeep', '.htaccess'];
 
+    use \SimpleModpack\Helpers\Traits\GetAbsoluteUrlFromFilePath;
+
     /**
      * @var string $name Name of the mod.
      */
     public $name;
 
     /**
-     * @var string $filename Path to the most recent jar file.
+     * @var string $filename File name of the most recent jar file.
      */
     public $filename;
+
+    /**
+     * @var string $filePath Absolute path to the most recent jar file.
+     */
+    public $filePath;
 
     /**
      * @var int $size File size of the mod's jar file.
@@ -41,6 +48,7 @@ class Mod
         return [
             'name' => $this->name,
             'filename' => $this->filename,
+            'downloadUrl' => $this->getAbsoluteUrlFromFilePath($this->filePath),
             'size' => $this->size,
             'updated' => $this->updated,
             'checksum' => $this->checksum
@@ -72,8 +80,9 @@ class Mod
                     }
                 }
 
-                $mod->size = filesize($folder . DIRECTORY_SEPARATOR . $mod->filename);
-                $mod->checksum = md5_file($folder . DIRECTORY_SEPARATOR . $mod->filename);
+                $mod->filePath = $folder . DIRECTORY_SEPARATOR . $mod->filename;
+                $mod->size = filesize($mod->filePath);
+                $mod->checksum = md5_file($mod->filePath);
             }
         }
 
